@@ -26,6 +26,7 @@ jobs:
         source_branch: ${{env.ON_PUSH_BRANCH_NAME}}
         publish_branch: gh-pages
         publish_dir: ${{env.ON_PUSH_PUBDIR}}
+        publish_remove_last_build: false
         gitbook_pdf: true
         gitbook_epub: true
         gitbook_mobi: true
