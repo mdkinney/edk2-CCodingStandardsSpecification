@@ -16,8 +16,11 @@ jobs:
       run: |
         raw=$(git branch -r --contains ${{ github.ref }})
         branch=${raw/origin\/}
+        pubdir=${branch//\/}
         echo $branch
+        echo $pubdir
         echo ::set-env name=BRANCH::$branch
+        echo ::set-env name=PUBDIR::$pubdir
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
