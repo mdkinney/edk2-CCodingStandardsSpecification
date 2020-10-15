@@ -24,7 +24,7 @@ jobs:
         branch=${raw/origin\/}
         echo $branch
         echo "ON_PUSH_BRANCH_NAME=$branch" >> $GITHUB_ENV
-        pubdir=${pubdir////-}
+        pubdir=${branch////-}
         echo /$pubdir
         echo "ON_PUSH_PUBDIR=/$pubdir" >> $GITHUB_ENV
     - name: Print Branch
