@@ -16,7 +16,9 @@ jobs:
       run: |
         raw=$(git branch -r --contains ${{ github.ref }})
         branch=${raw/origin\/}
-        publishdirname="${branch////-}"
+        publishdirname="/${branch////-}"
+        echo $branch
+        echo $publishdirname
         echo ::set-env name=BRANCH::$branch
         echo ::set-env name=PUBLISH_DIRNAME::$publishdirname
     - name: Gitbook Action
