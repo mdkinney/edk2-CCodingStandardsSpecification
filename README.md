@@ -112,4 +112,3 @@ Copyright (c) 2006-2017, Intel Corporation. All rights reserved.
 | 2.1      | DRAFT for REFORMAT                                                                                                                                | 10/30/2015 |
 | 2.2      | Convert to Gitbook                                                                                                                                | June 2017  |
 |          | [#425](https://bugzilla.tianocore.org/show_bug.cgi?id=425) [CCS] clarify line breaking and indentation requirements for multi-line function calls |            |
-| 2.2      | Use GitHub Action                                                                                                                                 | Oct 2020   |
