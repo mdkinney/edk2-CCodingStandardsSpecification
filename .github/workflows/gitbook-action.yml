@@ -22,7 +22,7 @@ jobs:
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
         source_branch: ${{ env.BRANCH }}
-        publish_dir: ${{ env.BRANCH }}
+        publish_dir: /${{ env.BRANCH }}
         gitbook_pdf: true
         gitbook_epub: true
         gitbook_mobi: true
