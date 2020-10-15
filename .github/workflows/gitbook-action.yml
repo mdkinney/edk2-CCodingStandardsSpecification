@@ -13,15 +13,13 @@ jobs:
     - name: Checkout action
       uses: actions/checkout@v2
     - name: Get Branch
-      run: |
-        raw=$(git branch -r --contains ${{ github.ref }})
-        branch=${raw/origin\/}
+      uses: nelonoel/branch-name@v1
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
-        source_branch: $branch
-        publish_dir: $branch
+        source_branch: ${BRANCH_NAME}
+        publish_dir: ${BRANCH_NAME}
         gitbook_pdf: true
-        gitbook_epub : true
-        gitbook_mobi : true
+        gitbook_epub: true
+        gitbook_mobi: true
