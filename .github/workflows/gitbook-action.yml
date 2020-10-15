@@ -25,9 +25,9 @@ jobs:
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
-        source_branch: ${{env.BRANCH}}
-        publish_branch: gh-pages
-        publish_dir: ${{env.PUBDIR}}
+        source_branch: "${{env.BRANCH}}"
+        publish_branch: "gh-pages"
+        publish_dir: "${{env.PUBDIR}}"
         gitbook_pdf: true
         gitbook_epub: true
         gitbook_mobi: true
