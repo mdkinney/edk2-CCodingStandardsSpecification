@@ -34,6 +34,7 @@ jobs:
       run: |
         echo ${{env.ON_PUSH_BRANCH_NAME}}
         echo ${{env.ON_PUSH_PUBDIR}}
+        more $GITHUB_ENV
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
