@@ -20,14 +20,18 @@ jobs:
       run: |
         raw=$(git branch -r --contains ${{ github.ref }})
         branch=${raw/origin\/}
-        echo "TRIGGER_BRANCH_NAME=$branch" >> $GITHUB_ENV
+        echo $branch
+        echo "ON_PUSH_BRANCH_NAME=$branch" >> $GITHUB_ENV
+        pubdir=${branch////-}
+        echo $pubdir
+        echo "ON_PUSH_PUBDIR=$pubdir" >> $GITHUB_ENV
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
         token: ${{secrets.PERSONAL_TOKEN}}
-        source_branch: ${{env.TRIGGER_BRANCH_NAME}}
+        source_branch: ${{env.ON_PUSH_BRANCH_NAME}}
         publish_branch: gh-pages
-        publish_dir: /${{env.TRIGGER_BRANCH_NAME}}
+        publish_dir: ${{env.ON_PUSH_PUBDIR}}
         gitbook_pdf: true
         gitbook_epub: true
         gitbook_mobi: true
