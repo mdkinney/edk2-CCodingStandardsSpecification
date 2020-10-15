@@ -40,7 +40,7 @@ jobs:
         token: ${{secrets.PERSONAL_TOKEN}}
         source_branch: ${{env.ON_PUSH_BRANCH_NAME}}
         publish_branch: gh-pages
-        publish_dir: ${{env.ON_PUSH_PUBDIR}}
+        publish_dir: /release-2.20
         gitbook_pdf: true
         gitbook_epub: true
         gitbook_mobi: true
