@@ -26,21 +26,20 @@ jobs:
         echo "ON_PUSH_BRANCH_NAME=$branch" >> $GITHUB_ENV
         pubdir=${branch////-}
         echo $pubdir
-        echo /$pubdir
-        echo "ON_PUSH_PUBDIR=/$pubdir" >> $GITHUB_ENV
+        pubdir2=/$pubdir
+        echo $pubdir2
+        echo "ON_PUSH_PUBDIR=$pubdir2" >> $GITHUB_ENV
     - name: Print Branch
       run: |
         echo ${{env.ON_PUSH_BRANCH_NAME}}
-        echo "${{env.ON_PUSH_BRANCH_NAME}}"
         echo ${{env.ON_PUSH_PUBDIR}}
-        echo "${{env.ON_PUSH_PUBDIR}}"
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
         token: ${{secrets.PERSONAL_TOKEN}}
         source_branch: ${{env.ON_PUSH_BRANCH_NAME}}
         publish_branch: gh-pages
-        publish_dir: /release-2.20
+        publish_dir: ${{env.ON_PUSH_PUBDIR}}
         gitbook_pdf: true
         gitbook_epub: true
         gitbook_mobi: true
