@@ -16,6 +16,8 @@ jobs:
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
+        source_branch: ${{ github.ref }}
+        publish_dir: ${{ github.ref }}
         gitbook_pdf: true
         gitbook_epub : true
         gitbook_mobi : true
