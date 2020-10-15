@@ -30,11 +30,13 @@ jobs:
         echo $pubdir2$pubdir
         echo $pubdir2:$pubdir
         echo "ON_PUSH_PUBDIR=$pubdir2$pubdir" >> $GITHUB_ENV
+        declare -p
     - name: Print Branch
       run: |
         echo ${{env.ON_PUSH_BRANCH_NAME}}
         echo ${{env.ON_PUSH_PUBDIR}}
         more $GITHUB_ENV
+        declare -p
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
