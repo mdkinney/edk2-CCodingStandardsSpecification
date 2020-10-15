@@ -10,14 +10,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Get Branch
+       run: |
+         raw=$(git branch -r --contains ${{ github.ref }})
+         branch=${raw/origin\/}
     - name: Checkout action
       uses: actions/checkout@v2
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
-        source_branch: ${{ github.ref }}
-        publish_dir: ${{ github.ref }}
+        source_branch: $branch
+        publish_dir: $branch
         gitbook_pdf: true
         gitbook_epub : true
         gitbook_mobi : true
