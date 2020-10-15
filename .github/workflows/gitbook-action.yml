@@ -20,7 +20,7 @@ jobs:
       run: |
         raw=$(git branch -r --contains ${{ github.ref }})
         branch=${raw/origin\/}
-        echo "TRIGGER_BRANCH_NAME=$branch" >> $GUTHUB_ENV
+        echo "TRIGGER_BRANCH_NAME=$branch" >> $GITHUB_ENV
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
