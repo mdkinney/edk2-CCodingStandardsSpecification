@@ -6,6 +6,10 @@ on:
       - release/*
   workflow_dispatch:
 
+#        pubdir=${branch//\/}
+#        echo $branch
+#        echo $pubdir
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,18 +20,14 @@ jobs:
       run: |
         raw=$(git branch -r --contains ${{ github.ref }})
         branch=${raw/origin\/}
-        pubdir=${branch//\/}
-        echo $branch
-        echo $pubdir
-        echo ::set-env name=BRANCH::$branch
-        echo ::set-env name=PUBDIR::$pubdir
+        echo "TRIGGER_BRANCH_NAME=$branch" >> $GUTHUB_ENV
     - name: Gitbook Action
       uses: zanderzhao/gitbook-action@v1.2.2
       with:
-        token: ${{ secrets.PERSONAL_TOKEN }}
-        source_branch: "${{env.BRANCH}}"
-        publish_branch: "gh-pages"
-        publish_dir: "${{env.PUBDIR}}"
+        token: ${{secrets.PERSONAL_TOKEN}}
+        source_branch: ${{env.TRIGGER_BRANCH_NAME}}
+        publish_branch: gh-pages
+        publish_dir: /${{env.TRIGGER_BRANCH_NAME}}
         gitbook_pdf: true
         gitbook_epub: true
         gitbook_mobi: true
