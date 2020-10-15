@@ -17,3 +17,5 @@ jobs:
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
         gitbook_pdf: true
+        gitbook_epub : true
+        gitbook_mobi : true
